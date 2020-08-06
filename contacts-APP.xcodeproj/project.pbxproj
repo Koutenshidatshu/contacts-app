@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,11 @@
 		BA74C34124DAD89D0072FF21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA74C33F24DAD89D0072FF21 /* LaunchScreen.storyboard */; };
 		BA74C34C24DAD89D0072FF21 /* contacts_APPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C34B24DAD89D0072FF21 /* contacts_APPTests.swift */; };
 		BA74C35724DAD89D0072FF21 /* contacts_APPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C35624DAD89D0072FF21 /* contacts_APPUITests.swift */; };
+		BA74C3A724DC180F0072FF21 /* ContactsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3A624DC180F0072FF21 /* ContactsApi.swift */; };
+		BA74C3A924DC183F0072FF21 /* ProductApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3A824DC183F0072FF21 /* ProductApiTest.swift */; };
+		BA74C3AB24DC190E0072FF21 /* GetContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3AA24DC190E0072FF21 /* GetContactsTests.swift */; };
+		BA74C3AD24DC196E0072FF21 /* Observable+GetEmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3AC24DC196E0072FF21 /* Observable+GetEmit.swift */; };
+		BA74C3B024DC19A50072FF21 /* GetContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3AF24DC19A50072FF21 /* GetContacts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		BA74C35224DAD89D0072FF21 /* contacts-APPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "contacts-APPUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA74C35624DAD89D0072FF21 /* contacts_APPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contacts_APPUITests.swift; sourceTree = "<group>"; };
 		BA74C35824DAD89D0072FF21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA74C3A624DC180F0072FF21 /* ContactsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsApi.swift; sourceTree = "<group>"; };
+		BA74C3A824DC183F0072FF21 /* ProductApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductApiTest.swift; sourceTree = "<group>"; };
+		BA74C3AA24DC190E0072FF21 /* GetContactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContactsTests.swift; sourceTree = "<group>"; };
+		BA74C3AC24DC196E0072FF21 /* Observable+GetEmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+GetEmit.swift"; sourceTree = "<group>"; };
+		BA74C3AF24DC19A50072FF21 /* GetContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContacts.swift; sourceTree = "<group>"; };
 		D223B2518EAFE028F3927D1F /* Pods-contacts-APP-contacts-APPUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contacts-APP-contacts-APPUITests.debug.xcconfig"; path = "Target Support Files/Pods-contacts-APP-contacts-APPUITests/Pods-contacts-APP-contacts-APPUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F945823B57BBB6A9F8A3EE23 /* Pods-contacts-APPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contacts-APPTests.debug.xcconfig"; path = "Target Support Files/Pods-contacts-APPTests/Pods-contacts-APPTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,7 +121,6 @@
 				F945823B57BBB6A9F8A3EE23 /* Pods-contacts-APPTests.debug.xcconfig */,
 				1FE62DB9D0D21AFF2B437D70 /* Pods-contacts-APPTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -119,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				BA74C33324DAD89A0072FF21 /* contacts-APP */,
+				BA74C3A224DC17D20072FF21 /* Unit Tests */,
+				BA74C3A324DC17D80072FF21 /* Integration Tests */,
 				BA74C34A24DAD89D0072FF21 /* contacts-APPTests */,
 				BA74C35524DAD89D0072FF21 /* contacts-APPUITests */,
 				BA74C33224DAD89A0072FF21 /* Products */,
@@ -140,6 +151,8 @@
 		BA74C33324DAD89A0072FF21 /* contacts-APP */ = {
 			isa = PBXGroup;
 			children = (
+				BA74C3AE24DC19920072FF21 /* Adapter */,
+				BA74C3A024DC179A0072FF21 /* Public */,
 				BA74C33424DAD89A0072FF21 /* AppDelegate.swift */,
 				BA74C33624DAD89A0072FF21 /* SceneDelegate.swift */,
 				BA74C33824DAD89A0072FF21 /* ViewController.swift */,
@@ -167,6 +180,55 @@
 				BA74C35824DAD89D0072FF21 /* Info.plist */,
 			);
 			path = "contacts-APPUITests";
+			sourceTree = "<group>";
+		};
+		BA74C3A024DC179A0072FF21 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				BA74C3A524DC17F20072FF21 /* Util */,
+				BA74C3A424DC17ED0072FF21 /* API */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		BA74C3A224DC17D20072FF21 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BA74C3A824DC183F0072FF21 /* ProductApiTest.swift */,
+			);
+			path = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		BA74C3A324DC17D80072FF21 /* Integration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BA74C3AA24DC190E0072FF21 /* GetContactsTests.swift */,
+			);
+			path = "Integration Tests";
+			sourceTree = "<group>";
+		};
+		BA74C3A424DC17ED0072FF21 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BA74C3A624DC180F0072FF21 /* ContactsApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BA74C3A524DC17F20072FF21 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				BA74C3AC24DC196E0072FF21 /* Observable+GetEmit.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		BA74C3AE24DC19920072FF21 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				BA74C3AF24DC19A50072FF21 /* GetContacts.swift */,
+			);
+			path = Adapter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +489,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA74C33924DAD89A0072FF21 /* ViewController.swift in Sources */,
+				BA74C3B024DC19A50072FF21 /* GetContacts.swift in Sources */,
+				BA74C3A724DC180F0072FF21 /* ContactsApi.swift in Sources */,
+				BA74C3AD24DC196E0072FF21 /* Observable+GetEmit.swift in Sources */,
 				BA74C33524DAD89A0072FF21 /* AppDelegate.swift in Sources */,
 				BA74C33724DAD89A0072FF21 /* SceneDelegate.swift in Sources */,
 			);
@@ -436,7 +501,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA74C3A924DC183F0072FF21 /* ProductApiTest.swift in Sources */,
 				BA74C34C24DAD89D0072FF21 /* contacts_APPTests.swift in Sources */,
+				BA74C3AB24DC190E0072FF21 /* GetContactsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
