@@ -25,9 +25,11 @@
 		BA74C3B024DC19A50072FF21 /* GetContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3AF24DC19A50072FF21 /* GetContacts.swift */; };
 		BA74C3B324DC1D170072FF21 /* ContactResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3B224DC1D170072FF21 /* ContactResponseTest.swift */; };
 		BA74C3B524DC1D3A0072FF21 /* ContactsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3B424DC1D3A0072FF21 /* ContactsListResponse.swift */; };
-		BA74C3C124DC5F610072FF21 /* ContactListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3C024DC5F610072FF21 /* ContactListViewModelTests.swift */; };
 		BA74C3C524DC60F40072FF21 /* GetContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3C424DC60F40072FF21 /* GetContactsProvider.swift */; };
 		BA74C3C724DC64240072FF21 /* GetContactsProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3C624DC64240072FF21 /* GetContactsProviderTest.swift */; };
+		BA74C3CB24DC65FE0072FF21 /* ContactListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3CA24DC65FE0072FF21 /* ContactListViewModelTests.swift */; };
+		BA74C3CD24DC67260072FF21 /* ProductApiMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3CC24DC67260072FF21 /* ProductApiMock.swift */; };
+		BA74C3D024DC69300072FF21 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74C3CF24DC69300072FF21 /* ContactListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,9 +78,11 @@
 		BA74C3AF24DC19A50072FF21 /* GetContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContacts.swift; sourceTree = "<group>"; };
 		BA74C3B224DC1D170072FF21 /* ContactResponseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactResponseTest.swift; sourceTree = "<group>"; };
 		BA74C3B424DC1D3A0072FF21 /* ContactsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListResponse.swift; sourceTree = "<group>"; };
-		BA74C3C024DC5F610072FF21 /* ContactListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactListViewModelTests.swift; path = "/Users/yonathan/Documents/Developer/Workspaces/Excercise/contacts-APP/Unit Tests/ContactListViewModelTests.swift"; sourceTree = "<absolute>"; };
 		BA74C3C424DC60F40072FF21 /* GetContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContactsProvider.swift; sourceTree = "<group>"; };
 		BA74C3C624DC64240072FF21 /* GetContactsProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContactsProviderTest.swift; sourceTree = "<group>"; };
+		BA74C3CA24DC65FE0072FF21 /* ContactListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModelTests.swift; sourceTree = "<group>"; };
+		BA74C3CC24DC67260072FF21 /* ProductApiMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductApiMock.swift; sourceTree = "<group>"; };
+		BA74C3CF24DC69300072FF21 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
 		D223B2518EAFE028F3927D1F /* Pods-contacts-APP-contacts-APPUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contacts-APP-contacts-APPUITests.debug.xcconfig"; path = "Target Support Files/Pods-contacts-APP-contacts-APPUITests/Pods-contacts-APP-contacts-APPUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F945823B57BBB6A9F8A3EE23 /* Pods-contacts-APPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-contacts-APPTests.debug.xcconfig"; path = "Target Support Files/Pods-contacts-APPTests/Pods-contacts-APPTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +165,7 @@
 		BA74C33324DAD89A0072FF21 /* contacts-APP */ = {
 			isa = PBXGroup;
 			children = (
+				BA74C3CE24DC691F0072FF21 /* ViewModel */,
 				BA74C3B124DC1CD90072FF21 /* Interactors */,
 				BA74C3AE24DC19920072FF21 /* Adapter */,
 				BA74C3A024DC179A0072FF21 /* Public */,
@@ -205,10 +210,11 @@
 		BA74C3A224DC17D20072FF21 /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
-				BA74C3C024DC5F610072FF21 /* ContactListViewModelTests.swift */,
 				BA74C3A824DC183F0072FF21 /* ProductApiTest.swift */,
 				BA74C3B224DC1D170072FF21 /* ContactResponseTest.swift */,
 				BA74C3C624DC64240072FF21 /* GetContactsProviderTest.swift */,
+				BA74C3CA24DC65FE0072FF21 /* ContactListViewModelTests.swift */,
+				BA74C3CC24DC67260072FF21 /* ProductApiMock.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -252,6 +258,14 @@
 				BA74C3C424DC60F40072FF21 /* GetContactsProvider.swift */,
 			);
 			path = Interactors;
+			sourceTree = "<group>";
+		};
+		BA74C3CE24DC691F0072FF21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BA74C3CF24DC69300072FF21 /* ContactListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,7 +525,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA74C3CD24DC67260072FF21 /* ProductApiMock.swift in Sources */,
 				BA74C33924DAD89A0072FF21 /* ViewController.swift in Sources */,
+				BA74C3D024DC69300072FF21 /* ContactListViewModel.swift in Sources */,
 				BA74C3B024DC19A50072FF21 /* GetContacts.swift in Sources */,
 				BA74C3A724DC180F0072FF21 /* ContactsApi.swift in Sources */,
 				BA74C3AD24DC196E0072FF21 /* Observable+GetEmit.swift in Sources */,
@@ -527,11 +543,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA74C3C724DC64240072FF21 /* GetContactsProviderTest.swift in Sources */,
+				BA74C3CB24DC65FE0072FF21 /* ContactListViewModelTests.swift in Sources */,
 				BA74C3A924DC183F0072FF21 /* ProductApiTest.swift in Sources */,
 				BA74C34C24DAD89D0072FF21 /* contacts_APPTests.swift in Sources */,
 				BA74C3AB24DC190E0072FF21 /* GetContactsTests.swift in Sources */,
 				BA74C3B324DC1D170072FF21 /* ContactResponseTest.swift in Sources */,
-				BA74C3C124DC5F610072FF21 /* ContactListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

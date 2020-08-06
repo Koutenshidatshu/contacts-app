@@ -49,27 +49,25 @@ class ContactResponseTest: XCTestCase {
            """
        }()
     
-    func testParseProductsWithEmptyData() {
+    func testParseContactWithEmptyData() {
         let disposeBag = DisposeBag()
-        let productListResponse = ContactListRequester(requestContacts: .just(emptyData.data(using: .utf8)!))
+        let contactListResponse = ContactListRequester(requestContacts: .just(emptyData.data(using: .utf8)!))
         var result: ContactsListResponse?
-        var capturedError : ContactListRequester.RequestError?
         
-        productListResponse.request()
-            .subscribe(onSuccess: { result = $0.first },
-                       onError: { capturedError = ($0 as? ContactListRequester.RequestError) })
+        contactListResponse.request()
+            .subscribe(onSuccess: { result = $0.first })
             .disposed(by: disposeBag)
         
         XCTAssertNil(result)
     }
 
-    func testParseProductsWithValidData() {
+    func testParseContactWithValidData() {
         let disposeBag = DisposeBag()
-        let productListResponse = ContactListRequester(requestContacts:
+        let contactListResponse = ContactListRequester(requestContacts:
             .just(validData.data(using: .utf8)!))
         var result: ContactsListResponse?
 
-        productListResponse.request()
+        contactListResponse.request()
             .subscribe(onSuccess: { result = $0.first },
                        onError: { XCTFail("fail with error \($0.localizedDescription)") })
             .disposed(by: disposeBag)
@@ -85,11 +83,11 @@ class ContactResponseTest: XCTestCase {
 
     func testWithInvalidData() {
         let disposeBag = DisposeBag()
-        let productListResponse = ContactListRequester(requestContacts:
+        let contactListResponse = ContactListRequester(requestContacts:
             .just(invalidData.data(using: .utf8)!))
         var capturedError : ContactListRequester.RequestError?
 
-        productListResponse.request()
+        contactListResponse.request()
             .subscribe(onError: { capturedError = ($0 as? ContactListRequester.RequestError) })
             .disposed(by: disposeBag)
         XCTAssertEqual(capturedError, .parseFailure)

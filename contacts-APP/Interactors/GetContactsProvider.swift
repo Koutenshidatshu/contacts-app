@@ -8,8 +8,11 @@
 
 import Foundation
 import RxSwift
+protocol ContactListProvider {
+    func get() -> Observable<[ContactsListResponse]>
+}
 
-struct GetContactsProvider {
+struct GetContactsProviderImpl: ContactListProvider {
     private let service: GetContacts
     
     init(service: GetContacts) {

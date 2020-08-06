@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-struct ContactsListResponse : Decodable {
+struct ContactsListResponse : Decodable, Equatable {
     enum CodingKeys : String, CodingKey {
         case id
         case fistname = "first_name"

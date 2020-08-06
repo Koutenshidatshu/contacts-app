@@ -1,5 +1,5 @@
 //
-//  ProductApiTest.swift
+//  ContactApiTest.swift
 //  contacts-APPTests
 //
 //  Created by Yonathan Wijaya on 06/08/20.
@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import contacts_APP
-class ProductApiTest: XCTestCase {
+class ContactContactApiTest: XCTestCase {
 
     func testURLPath() {
         let urlPath = ContactsApi()
