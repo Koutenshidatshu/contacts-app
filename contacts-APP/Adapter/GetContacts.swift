@@ -10,7 +10,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct GetContacts {
+protocol GetContacts {
+    func get() -> Observable<Data>
+}
+
+struct GetContactsImpl: GetContacts {
     func get() -> Observable<Data> {
         let session = URLSession.shared
         let data = session.rx.response(request: requestUrl())

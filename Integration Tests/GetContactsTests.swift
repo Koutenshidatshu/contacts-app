@@ -35,7 +35,7 @@ class GetContactsTests: XCTestCase {
     }
     
     private func createRequestString() -> String {
-        let data = GetContacts().get().firstEmit()!
+        let data = GetContactsImpl().get().firstEmit()!
         return String(data: data, encoding: .utf8)!
     }
 }
