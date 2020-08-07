@@ -24,3 +24,9 @@ struct GetContactsProviderImpl: ContactListProvider {
         return requester.request().asObservable()
     }
 }
+
+struct ContactListProviderFactory {
+    static func create() -> ContactListProvider {
+        return GetContactsProviderImpl(service: GetContactsImpl())
+    }
+}

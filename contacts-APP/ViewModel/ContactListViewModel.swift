@@ -11,9 +11,9 @@ import RxSwift
 import RxCocoa
 
 class ContactListViewModel {
-    private let provider : ContactListProvider
     lazy var contact: Observable<[ContactsListResponse]> = contactRelay.asObservable()
     
+    private let provider : ContactListProvider
     private let disposeBag = DisposeBag()
     private let contactRelay = PublishRelay<[ContactsListResponse]>()
     private var contacts = [ContactsListResponse]()
@@ -43,3 +43,9 @@ class ContactListViewModel {
     }
 }
 
+struct ContactListViewModelFactory {
+    static func create() -> ContactListViewModel {
+        let provider = ContactListProviderFactory.create()
+        return ContactListViewModel(provider: provider)
+    }
+}
