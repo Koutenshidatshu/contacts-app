@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ContactDetailViewController: UIViewController {
 
+    private let disposeBag = DisposeBag()
+    private let viewModel = ContactDetailViewModelFactory.create()
+    private var contactDetail: ContactDetailResponse? = nil
+    
     public var contactId: Int = 0
     var isEdit: Bool = false
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,9 +25,35 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var mobileTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getContactDetail()
+    }
+    
+    func getContactDetail() {
+        viewModel.contact
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] result  in
+                self?.contactDetail = result
+                self?.assignContactDetail()
+            }).disposed(by: disposeBag)
+        
+        viewModel.fetchContactDetail(id: contactId)
+    }
+    
+    private func assignContactDetail() {
+        let firstName = contactDetail?.fistname ?? ""
+        let lastName = contactDetail?.lastname ?? ""
+        
+        nameLabel.text = firstName + " " + lastName
+        firstNameTextField.text = firstName
+        lastNameTextField.text = lastName
+        mobileTextField.text = contactDetail?.phoneNumber ?? ""
+        emailTextField.text = contactDetail?.email ?? ""
     }
     
     @IBAction func editTapped(_ sender: Any) {
