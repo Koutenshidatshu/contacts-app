@@ -52,6 +52,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell ?? UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          let selectedContact = viewModel.didSelectContact(at: indexPath.row)
+        let vc = ContactDetailViewController()
+        guard let id = selectedContact?.id else { return }
+        vc.contactId = id
+          present(vc, animated: true, completion: nil)
+      }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
