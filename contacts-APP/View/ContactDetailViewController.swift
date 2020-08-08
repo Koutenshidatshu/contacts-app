@@ -33,6 +33,13 @@ class ContactDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getContactDetail()
+        
+        setupTextField(isEditing: false)
+        
+        let tap = UITapGestureRecognizer(target: self.view,
+                                         action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     func getContactDetail() {
@@ -68,9 +75,18 @@ class ContactDetailViewController: UIViewController {
             updaterViewModel.updateContact(id: contactId,
                                            params: updateContact())
         }
-        
-        firstNameTextField.isEnabled = isEdit
-        firstNameTextField.isUserInteractionEnabled = isEdit
+        setupTextField(isEditing: isEdit)
+    }
+    
+    private func setupTextField(isEditing: Bool) {
+        firstNameTextField.isEnabled = isEditing
+        firstNameTextField.isUserInteractionEnabled = isEditing
+        lastNameTextField.isEnabled = isEditing
+        lastNameTextField.isUserInteractionEnabled = isEditing
+        emailTextField.isEnabled = isEditing
+        emailTextField.isUserInteractionEnabled = isEditing
+        mobileTextField.isEnabled = isEditing
+        mobileTextField.isUserInteractionEnabled = isEditing
     }
     
     func updateContact() -> [String: Any] {
