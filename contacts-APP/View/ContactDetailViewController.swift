@@ -69,6 +69,9 @@ class ContactDetailViewController: UIViewController {
         isEdit = !isEdit
         if isEdit {
             editButton.setTitle("Done", for: .normal)
+            DispatchQueue.main.async {
+                self.firstNameTextField.becomeFirstResponder()
+            }
             
         } else {
             editButton.setTitle("Edit", for: .normal)
