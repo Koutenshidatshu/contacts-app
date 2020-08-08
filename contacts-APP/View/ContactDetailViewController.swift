@@ -11,9 +11,10 @@ import RxSwift
 import RxCocoa
 
 class ContactDetailViewController: UIViewController {
-
+    
     private let disposeBag = DisposeBag()
     private let viewModel = ContactDetailViewModelFactory.create()
+    private let updaterViewModel = ContactUpdateViewModelFactory.create()
     private var contactDetail: ContactDetailResponse? = nil
     
     public var contactId: Int = 0
@@ -61,14 +62,26 @@ class ContactDetailViewController: UIViewController {
         isEdit = !isEdit
         if isEdit {
             editButton.setTitle("Done", for: .normal)
-     
+            
         } else {
             editButton.setTitle("Edit", for: .normal)
-            //send to api for update
+            updaterViewModel.updateContact(id: contactId,
+                                           params: updateContact())
         }
         
         firstNameTextField.isEnabled = isEdit
         firstNameTextField.isUserInteractionEnabled = isEdit
+    }
+    
+    func updateContact() -> [String: Any] {
+        var params: [String: Any] = [:]
+        params = [
+            "first_name": firstNameTextField.text ?? "",
+            "last_name": lastNameTextField.text ?? "",
+            "email": emailTextField.text ?? "",
+            "phone_number" : mobileTextField.text ?? ""
+        ]
+        return params
     }
     
     @IBAction func callTapped(_ sender: Any) {
