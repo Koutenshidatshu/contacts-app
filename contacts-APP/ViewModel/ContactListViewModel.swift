@@ -25,12 +25,14 @@ class ContactListViewModel {
     func viewLoad() {
         provider.get()
             .subscribe(onNext: { [weak self] result in
+                self?.contacts.removeAll()
                 self?.contacts.append(contentsOf: result)
                 self?.contactRelay.accept(result)
         }).disposed(by: disposeBag)
     }
     
     func getContactount() -> Int {
+        print("@@@@  count", contacts.count)
         return contacts.count
     }
     

@@ -10,7 +10,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+protocol HomeDelegate: class {
+    func backTriggered()
+}
+
+class ViewController: UIViewController, HomeDelegate {
+    
+    func backTriggered() {
+        let alert = UIAlertController(title: "Alert", message: "Update Contact Success", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        self.viewModel.viewLoad()
+
+    }
+    
     private let disposeBag = DisposeBag()
     private let viewModel = ContactListViewModelFactory.create()
     
@@ -55,6 +68,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           let selectedContact = viewModel.didSelectContact(at: indexPath.row)
         let vc = ContactDetailViewController()
+        vc.delegate = self
         guard let id = selectedContact?.id else { return }
         vc.contactId = id
           present(vc, animated: true, completion: nil)

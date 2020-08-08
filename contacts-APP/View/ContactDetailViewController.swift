@@ -29,6 +29,7 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var mobileTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    weak var delegate: HomeDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class ContactDetailViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func getContactDetail() {
+    private func getContactDetail() {
         viewModel.contact
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { [weak self] result  in
@@ -51,6 +52,11 @@ class ContactDetailViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         viewModel.fetchContactDetail(id: contactId)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.backTriggered()
     }
     
     private func assignContactDetail() {
