@@ -101,9 +101,18 @@ class ContactDetailViewController: UIViewController {
     }
     
     @IBAction func callTapped(_ sender: Any) {
+        let phoneNumber = mobileTextField.text ?? ""
+        if let url = URL(string: "tel://\(phoneNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
     }
     
     @IBAction func messageTapped(_ sender: Any) {
+        
     }
     
     @IBAction func emailTapped(_ sender: Any) {
